@@ -3,6 +3,11 @@ title: 'Markdown Style Guide'
 description: 'Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.'
 pubDate: 'Jun 19 2024'
 heroImage: '../../assets/blog-placeholder-1.jpg'
+alt: 'Something about the Image'
+preview: 'Microaggressions and unconscious bias are just as destructive to the Black community as heart disease.'
+draft: false
+category: 'Culture'
+tags: 'Culture, Community, Bias'
 ---
 
 Here is a sample of some basic Markdown syntax that can be used when writing Markdown content in Astro.

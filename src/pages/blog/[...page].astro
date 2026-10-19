@@ -1,0 +1,144 @@
+---
+import BlogLayout from '../../layouts/BlogLayout.astro';
+import type { GetStaticPaths } from "astro";
+import { Image } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import Footer from '../../components/Footer.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
+import Header from '../../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_TITLE } from '../../consts';
+
+
+export const getStaticPaths = (async ({ paginate }) => {
+	const posts = (await getCollection('blog')).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
+	
+	return paginate(posts, {pageSize: 6,});
+}) satisfies GetStaticPaths;
+
+const {page} = Astro.props
+const currentPage = page.currentPage;
+const lastPage = page.lastPage;
+
+// Helper to generate the exact array of page numbers to render
+// For simple logic, we just generate 1 to lastPage. 
+// (For huge blogs you can slice this array around the currentPage)
+const pages = Array.from({ length: lastPage }, (_, i) => i + 1);
+// console.log(page)
+
+const allPosts = (await getCollection('blog')).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
+  // for(const post of allPosts){
+  //   console.log(post.data.tags)
+  // }
+  const tags = [...new Set(allPosts.flatMap(post => post.data.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)))]
+  // console.log(tags)
+---
+
+<BlogLayout title="Blog" page="blog-page" crumb="All Posts" recent={allPosts.slice(0, 5)} tags={tags}>
+
+        <div class="col-lg-8">
+
+          <!-- Blog Posts Section -->
+          <section id="blog-posts" class="blog-posts section">
+
+            <div class="container">
+              <div class="row gy-4">
+			<!--  Post list items -->
+				{page.data.map((post) => (
+					<div class="col-lg-6">
+                  <article class="position-relative h-100">
+
+                    <div class="post-img position-relative overflow-hidden">
+                      <Image src={post.data.heroImage} class="img-fluid" alt={post.data.alt} />
+                      <FormattedDate span date={post.data.pubDate} />
+                    </div>
+
+                    <div class="post-content d-flex flex-column">
+
+                      <h3 class="post-title">{post.data.title}</h3>
+
+                      <div class="meta d-flex align-items-center">
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-person"></i> <span class="ps-2">Marcy</span>
+                        </div>
+                        <span class="px-3 text-black-50">/</span>
+                        <div class="d-flex align-items-center">
+                          <i class="bi bi-folder2"></i> <span class="ps-2">{post.data.category}</span>
+                        </div>
+                      </div>
+
+                      <p>
+                        {post.data.preview}
+                      </p>
+
+                      <hr>
+
+                      <a href={`/blog/${post.id}/`} class="readmore stretched-link"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+
+                    </div>
+
+                  </article>
+                </div>
+				))}
+                <!-- /End post list items -->
+
+              </div>
+            </div>
+
+          </section>
+		  <!-- /Blog Posts Section -->
+
+      <!-- Blog Pagination Section -->
+<section id="blog-pagination" class="blog-pagination section">
+  <div class="container">
+    <div class="d-flex justify-content-center">
+      <ul>
+        {/* Previous Page Link */}
+        {page.url.prev ? (
+          <li><a href={page.url.prev}><i class="bi bi-chevron-left"></i></a></li>
+        ) : (
+          <li class="disabled"><a><i class="bi bi-chevron-left"></i></a></li>
+        )}
+
+        {/* Dynamic Page Numbers */}
+        {pages.map((pageNum) => {
+                  
+          // Construct the dynamic URL path safely based on your current path structure
+          // This ensures page 1 goes backwards correctly to the main blog landing
+          // FORCE absolute paths from the root domain to prevent appending segments
+          // Page 1 points to /blog, all subsequent tracks point to /blog/2, /blog/3, etc.
+          const pageUrl = pageNum === 1 ? '/blog' : `/blog/${pageNum}`;
+
+          return (
+            <li>
+              <a 
+                href={pageUrl} 
+                class={pageNum === currentPage ? "active" : ""}
+              >
+                {pageNum}
+              </a>
+            </li>
+          );
+        })}
+
+        {/* Next Page Link */}
+        {page.url.next ? (
+          <li><a href={page.url.next}><i class="bi bi-chevron-right"></i></a></li>
+        ) : (
+          <li class="disabled"><a><i class="bi bi-chevron-right"></i></a></li>
+        )}
+      </ul>
+    </div>
+  </div>
+</section>
+<!-- /Blog Pagination Section -->
+
+        </div>
+
+        
+
+</BlogLayout>

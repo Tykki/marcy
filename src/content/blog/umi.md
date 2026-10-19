@@ -1,0 +1,17 @@
+---
+title: 'UMI: The Flow of the Ocean'
+description: 'Lorem ipsum dolor sit amet'
+pubDate: 'Jul 08 2026'
+heroImage: '../../assets/blog-placeholder-3.jpg'
+alt: 'Something about the Image'
+preview: 'A student at the University of Southern California, Tierra Umi Wilson or better known by her stage name UMI is an independent rising musical artist that promotes healing and a feeling of normalcy in her lyrics.'
+draft: false
+category: 'Lifestyle'
+tags: 'UMI, Music, Songwriting, Artist, Feelings, Emotions, Empathy, Ocean, Love, Coming Of Age, R&B, Neo Soul, Lo-Fi'
+---
+
+A student at the University of Southern California, Tierra Umi Wilson or better known by her stage name UMI is an independent rising musical artist that promotes healing and a feeling of normalcy in her lyrics. She has always been a fan of music since she was a child, but she got her start on YouTube and SoundCloud in high school. UMI’s poetics can be described as a comforting hug from a long-time friend: it reassures you that everything will be okay. Her lyrics are centered around everyday experiences such as young love and insecurities. What sets her music apart from others is the peaceful almost intimate-like quality it contains that is simultaneously familiar enough to be comfortable but objective where a broad audience can relate and find strength from it. Like her stage name (UMI is Japanese for ocean), her music carries a listener through her relatable lyrics and urges them to go with the flow like the movement of a gentle wave.
+
+UMI’s latest EP Introspection came out June 21st, 2020 and follows the theme of looking back and understanding one’s self. “Introspection,” through smooth and tranquil melodies, explores one’s flaws and regrets with a mimicking chorus of “Why I'm so afraid to fight back? I got a lot of shit to unpack. I never write back. I think it's my bad…Wish the thoughts would go away (My God, my mind be). Floatin' farther away (I go so far, see?).” “Open Up” is gentle and reminiscent of one’s thoughts prior to a breakup. The speaker is attempting to rationalize what they’re feeling and wishes they could be more vulnerable with their significant other. “Where I Wander” holds more tension than the previous two songs but continues the theme of searching for understanding of a certain situation. The speaker reminds themselves and an unnamed boy of what’s important: you’re in control. “Bet” is rhythmic and delves into a relationship that has soured. UMI’s lyrics feed into other and models the back and forth one may have when they are questioning someone’s intentions “I'm beyond it, beyond it. I be moving around it. And you on some clown shit (You on some clown shit, babe). And I ain't about it. Don't ever doubt it (Don't ever doubt it, babe)…Tell you what the truth is. We ain't gotta do this. Boy you put me through shit. “Pretty Girl hi” is upbeat and could have different meanings. The speaker could be fascinated with a certain girl and wishes to enter a relationship with them, or the speaker could be referring to themselves in the third persons and dreams of the day they are their ideal person. The last song, “Broken Bottle,” reflects on a previous relationship and the speaker’s regrets.
+
+UMI is an artist to watch as her music fosters and promotes connection between an artist and their music and their audience. Introspection, alongside her other projects, breaks barriers that can unite her listeners.

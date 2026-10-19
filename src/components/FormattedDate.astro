@@ -3,10 +3,10 @@ interface Props {
 	date: Date;
 }
 
-const { date } = Astro.props;
+const { date, span} = Astro.props;
 ---
 
-<time datetime={date.toISOString()}>
+<time class={span ? 'post-date' : null} datetime={date.toISOString()}>
 	{date.toLocaleDateString('en-us', {
 		year: 'numeric',
 		month: 'short',

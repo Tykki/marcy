@@ -1,0 +1,87 @@
+---
+import { Image } from 'astro:assets';
+import type { CollectionEntry } from 'astro:content';
+import FormattedDate from '../components/FormattedDate.astro';
+import MainLayout from './MainLayout.astro';
+import authorImg from './src/assets/img/blog/blog-author.jpg'
+
+type Props = CollectionEntry<'blog'>['data'];
+
+const { title, page, crumb, tags, recent } = Astro.props;
+// console.log(posts)
+---
+
+<MainLayout title={title} page={page} crumb={crumb}>
+	<div class="container">
+      <div class="row">
+ <slot />
+ <div class="col-lg-4 sidebar">
+
+          <div class="widgets-container">
+
+            <!-- Blog Author Widget 2 -->
+            {page === 'blog-page' ? <div class="blog-author-widget-2 widget-item">
+
+              <div class="d-flex flex-column align-items-center">
+                <Image src={authorImg} class="rounded-circle flex-shrink-0" width="160" height="160" alt="photo of author" />
+                <h4>Marcy</h4>
+                <div class="social-links">
+                  <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
+                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
+                  <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
+                </div>
+
+                <p>
+                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
+                </p>
+
+              </div>
+            </div> : null}
+			<!--/Blog Author Widget 2 -->
+
+            <!-- Search Widget -->
+            <div class="search-widget widget-item">
+
+              <h3 class="widget-title">Search</h3>
+              <form action="">
+                <input type="text">
+                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
+              </form>
+
+            </div><!--/Search Widget -->
+
+            <!-- Recent Posts Widget -->
+            <div class="recent-posts-widget widget-item">
+
+              <h3 class="widget-title">Recent Posts</h3>
+
+			  <!-- {recent.map((post) => (
+				<div class="post-item">
+                <Image src={post.data.heroImage} alt={post.data.alt} width="80" height="80" class="flex-shrink-0" />
+                <div>
+                  <h4><a href={post.id}>{post.data.title}</a></h4>
+                  <FormattedDate date={post.data.pubDate} />
+                </div>
+              </div>
+			  )) } -->
+              <!-- End recent post item-->
+
+            </div><!--/Recent Posts Widget -->
+
+            <!-- Tags Widget -->
+            <div class="tags-widget widget-item">
+
+              <h3 class="widget-title">Tags</h3>
+              <ul>
+				<!-- {tags && tags.map(tag => <li><a href="#">{tag}</a></li>) } -->
+              </ul>
+
+            </div><!--/Tags Widget -->
+
+          </div>
+
+        </div>
+ </div>
+ </div>
+</MainLayout>

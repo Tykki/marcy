@@ -14,6 +14,11 @@ const blog = defineCollection({
 			pubDate: z.coerce.date(),
 			updatedDate: z.coerce.date().optional(),
 			heroImage: z.optional(image()),
+			alt: z.string().optional(),
+			preview: z.string(),
+			draft: z.boolean(), 
+			category: z.enum(['Fashion', 'Culture', 'Lifestyle']),
+			tags: z.string(),
 		}),
 });
 
