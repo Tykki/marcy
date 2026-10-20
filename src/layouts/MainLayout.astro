@@ -25,8 +25,8 @@ const {title, description, page, crumb} = Astro.props
   <meta name="keywords" content="">
 
   <!-- Favicons -->
-  <link href="./src/assets/img/favicon.png" rel="icon">
-  <link href="./src/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href={import.meta.env.BASE_URL + '/src/assets/img/favicon.png'} rel="icon">
+  <link href={import.meta.env.BASE_URL + '/src/assets/img/apple-touch-icon.png'} rel="apple-touch-icon">
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -47,7 +47,7 @@ const {title, description, page, crumb} = Astro.props
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center me-auto me-xl-0">
+      <a href={import.meta.env.BASE_URL} class="logo d-flex align-items-center me-auto me-xl-0">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="../assets/img/logo.png" alt=""> -->
         <h1 class="sitename">As Told By Marcy</h1>
@@ -55,36 +55,36 @@ const {title, description, page, crumb} = Astro.props
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="/" class="active">Home</a></li>
-          <li><a href="/about">About</a></li>
-          <li><a href="/single-post">Single Post</a></li>
-          <li class="dropdown"><a href="/blog"><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          <li><a href={import.meta.env.BASE_URL} class="active">Home</a></li>
+          <li><a href=`${import.meta.env.BASE_URL}/about`>About</a></li>
+          <li><a href=`${import.meta.env.BASE_URL}/single-post`>Single Post</a></li>
+          <li class="dropdown"><a href=`${import.meta.env.BASE_URL}/blog`><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href="/category">Category 1</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+              <li><a href=`${import.meta.env.BASE_URL}/category`>Category 1</a></li>
+              <li class="dropdown"><a href=`${import.meta.env.BASE_URL}/#`><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
                 <ul>
-                  <li><a href="#">Deep Dropdown 1</a></li>
-                  <li><a href="#">Deep Dropdown 2</a></li>
-                  <li><a href="#">Deep Dropdown 3</a></li>
-                  <li><a href="#">Deep Dropdown 4</a></li>
-                  <li><a href="#">Deep Dropdown 5</a></li>
+                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 1</a></li>
+                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 2</a></li>
+                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 3</a></li>
+                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 4</a></li>
+                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 5</a></li>
                 </ul>
               </li>
-              <li><a href="category.html">Category 2</a></li>
-              <li><a href="category.html">Category 3</a></li>
-              <li><a href="category.html">Category 4</a></li>
+              <li><a href=`${import.meta.env.BASE_URL}/category`>Category 2</a></li>
+              <li><a href=`${import.meta.env.BASE_URL}/category`>Category 3</a></li>
+              <li><a href=`${import.meta.env.BASE_URL}/category`>Category 4</a></li>
             </ul>
           </li>
-          <li><a href="/contact">Contact</a></li>
+          <li><a href="/marcy/contact">Contact</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <div class="header-social-links">
-        <a href="#" class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href="#" class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bi bi-linkedin"></i></a>
+        <a href=`${import.meta.env.BASE_URL}/#` class="twitter"><i class="bi bi-twitter-x"></i></a>
+        <a href=`${import.meta.env.BASE_URL}/#` class="facebook"><i class="bi bi-facebook"></i></a>
+        <a href=`${import.meta.env.BASE_URL}/#` class="instagram"><i class="bi bi-instagram"></i></a>
+        <a href=`${import.meta.env.BASE_URL}/#` class="linkedin"><i class="bi bi-linkedin"></i></a>
       </div>
 
     </div>
@@ -97,7 +97,7 @@ const {title, description, page, crumb} = Astro.props
         <h1 class="mb-2 mb-lg-0">{crumb}</h1>
         <nav class="breadcrumbs">
           <ol>
-            <li><a href="index.html">Home</a></li>
+            <li><a href={import.meta.env.BASE_URL}>Home</a></li>
             <li class="current">{crumb}</li>
           </ol>
         </nav>
@@ -114,7 +114,7 @@ const {title, description, page, crumb} = Astro.props
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
-          <a href="index.html" class="logo d-flex align-items-center">
+          <a href={import.meta.env.BASE_URL} class="logo d-flex align-items-center">
             <span class="sitename">As Told By Marcy</span>
           </a>
           <div class="footer-contact pt-3">
@@ -124,54 +124,54 @@ const {title, description, page, crumb} = Astro.props
             <p><strong>Email:</strong> <span>info@example.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
-            <a href=""><i class="bi bi-twitter-x"></i></a>
-            <a href=""><i class="bi bi-facebook"></i></a>
-            <a href=""><i class="bi bi-instagram"></i></a>
-            <a href=""><i class="bi bi-linkedin"></i></a>
+            <a href={import.meta.env.BASE_URL}><i class="bi bi-twitter-x"></i></a>
+            <a href={import.meta.env.BASE_URL}><i class="bi bi-facebook"></i></a>
+            <a href={import.meta.env.BASE_URL}><i class="bi bi-instagram"></i></a>
+            <a href={import.meta.env.BASE_URL}><i class="bi bi-linkedin"></i></a>
           </div>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Useful Links</h4>
           <ul>
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About us</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Terms of service</a></li>
-            <li><a href="#">Privacy policy</a></li>
+            <li><a href={import.meta.env.BASE_URL+'/#'}>Home</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>About us</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Services</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Terms of service</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Privacy policy</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Our Services</h4>
           <ul>
-            <li><a href="#">Web Design</a></li>
-            <li><a href="#">Web Development</a></li>
-            <li><a href="#">Product Management</a></li>
-            <li><a href="#">Marketing</a></li>
-            <li><a href="#">Graphic Design</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Web Design</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Web Development</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Product Management</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Marketing</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Graphic Design</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Hic solutasetp</h4>
           <ul>
-            <li><a href="#">Molestiae accusamus iure</a></li>
-            <li><a href="#">Excepturi dignissimos</a></li>
-            <li><a href="#">Suscipit distinctio</a></li>
-            <li><a href="#">Dilecta</a></li>
-            <li><a href="#">Sit quas consectetur</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Molestiae accusamus iure</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Excepturi dignissimos</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Suscipit distinctio</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Dilecta</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Sit quas consectetur</a></li>
           </ul>
         </div>
 
         <div class="col-lg-2 col-md-3 footer-links">
           <h4>Nobis illum</h4>
           <ul>
-            <li><a href="#">Ipsam</a></li>
-            <li><a href="#">Laudantium dolorum</a></li>
-            <li><a href="#">Dinera</a></li>
-            <li><a href="#">Trodelas</a></li>
-            <li><a href="#">Flexo</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Ipsam</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Laudantium dolorum</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Dinera</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Trodelas</a></li>
+            <li><a href=`${import.meta.env.BASE_URL}/#`>Flexo</a></li>
           </ul>
         </div>
 
@@ -192,7 +192,7 @@ const {title, description, page, crumb} = Astro.props
   </footer>
 
   <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href=`${import.meta.env.BASE_URL}/#` id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 
   <!-- Preloader -->
   <div id="preloader"></div>
