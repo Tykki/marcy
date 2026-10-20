@@ -7,7 +7,7 @@ import { defineConfig, fontProviders } from 'astro/config';
 // https://astro.build/config
 export default defineConfig({
 	site: 'https://tykki.github.io',
-	// base: '/marcy',
+	base: '/marcy',
 	integrations: [mdx(), sitemap()],
 	fonts: [
 		{
