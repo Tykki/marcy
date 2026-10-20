@@ -1,8 +1,8 @@
 ---
 import { type CollectionEntry, getCollection, render } from 'astro:content';
 import {Image} from 'astro:assets'
-import BlogPost from '../../layouts/BlogPost.astro';
 import BlogLayout from '../../layouts/BlogLayout.astro';
+import FormattedDate from '../../components/FormattedDate.astro';
 
 export async function getStaticPaths() {
 	const posts = await getCollection('blog');
@@ -15,10 +15,14 @@ type Props = CollectionEntry<'blog'>;
 
 const post = Astro.props;
 const { Content } = await render(post);
+const tags = post.data.tags.split(',').map(tag => tag.trim()).filter(tag => tag.length > 0)
+const allPosts = (await getCollection('blog')).sort(
+		(a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
+	);
 
 ---
 
-<BlogLayout title={post.id} page="post-page" crumb={post.data.title} tags={post.data.tags} recent>
+<BlogLayout title={post.id} page="post-page" crumb={post.data.title} tags={tags} recent={allPosts.slice(0, 5)}>
 	<div class="col-lg-8">
 
           <!-- Blog Details Section -->
@@ -36,7 +40,7 @@ const { Content } = await render(post);
                 <div class="meta-top">
                   <ul>
                     <li class="d-flex align-items-center"><i class="bi bi-person"></i> <a href="#">Marcy</a></li>
-                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><time datetime="2020-01-01">{post.data.pubDate}</time></a></li>
+                    <li class="d-flex align-items-center"><i class="bi bi-clock"></i> <a href="#"><FormattedDate date={post.data.pubDate} /></a></li>
                     <li class="d-flex align-items-center"><i class="bi bi-chat-dots"></i> <a href="#">12 Comments</a></li>
                   </ul>
                 </div><!-- End meta top -->

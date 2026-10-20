@@ -1,14 +1,14 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
-import FormattedDate from '../components/FormattedDate.astro';
+import FormattedDate  from '../components/FormattedDate.astro';
 import MainLayout from './MainLayout.astro';
 import authorImg from '../assets/img/blog/blog-author.jpg'
+import {socialLinks} from '../consts'
 
 type Props = CollectionEntry<'blog'>['data'];
 
 const { title, page, crumb, tags, recent } = Astro.props;
-// console.log(posts)
 ---
 
 <MainLayout title={title} page={page} crumb={crumb}>
@@ -19,26 +19,35 @@ const { title, page, crumb, tags, recent } = Astro.props;
 
           <div class="widgets-container">
 
-            <!-- Blog Author Widget 2 -->
-            {page === 'blog-page' ? <div class="blog-author-widget-2 widget-item">
+            <!-- Blog Author Widget -->
+            {page && <div class:list={[page === 'blog-page' ? "blog-author-widget-2" : "blog-author-widget", "widget-item"]}>
 
               <div class="d-flex flex-column align-items-center">
-                <Image src={authorImg} class="rounded-circle flex-shrink-0" width="160" height="160" alt="photo of author" />
-                <h4>Marcy</h4>
-                <div class="social-links">
-                  <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
-                  <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                  <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                  <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
+				{page === 'blog-page' ? 
+					<Image src={authorImg} class="rounded-circle flex-shrink-0" width="160" height="160" alt="photo of author" />
+					<h4>Marcy</h4>
+					<div class="social-links">
+						{socialLinks.map(social => <a href={social.href}><i class={social.icon}></i></a>)}
+					</div>
+				: 
+				<div class="d-flex align-items-center w-100">
+                  <Image src={authorImg} class="rounded-circle flex-shrink-0" width="120" height="120" alt="photo of author" />
+                  <div>
+                    <h4>Marcy</h4>
+                    <div class="social-links">
+                      {socialLinks.map(social => <a href={social.href}><i class={social.icon}></i></a>)}
+                    </div>
+                  </div>
                 </div>
+				}
 
                 <p>
                   Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
                 </p>
 
               </div>
-            </div> : null}
-			<!--/Blog Author Widget 2 -->
+            </div>}
+			<!--/Blog Author Widget -->
 
             <!-- Search Widget -->
             <div class="search-widget widget-item">
@@ -56,7 +65,7 @@ const { title, page, crumb, tags, recent } = Astro.props;
 
               <h3 class="widget-title">Recent Posts</h3>
 
-			  <!-- {recent.map((post) => (
+			  {recent.map((post) => (
 				<div class="post-item">
                 <Image src={post.data.heroImage} alt={post.data.alt} width="80" height="80" class="flex-shrink-0" />
                 <div>
@@ -64,7 +73,7 @@ const { title, page, crumb, tags, recent } = Astro.props;
                   <FormattedDate date={post.data.pubDate} />
                 </div>
               </div>
-			  )) } -->
+			  )) }
               <!-- End recent post item-->
 
             </div><!--/Recent Posts Widget -->
@@ -74,7 +83,7 @@ const { title, page, crumb, tags, recent } = Astro.props;
 
               <h3 class="widget-title">Tags</h3>
               <ul>
-				<!-- {tags && tags.map(tag => <li><a href="#">{tag}</a></li>) } -->
+				{tags && tags.map(tag => <li><a href="#">{tag}</a></li>) }
               </ul>
 
             </div><!--/Tags Widget -->

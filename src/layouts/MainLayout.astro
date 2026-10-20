@@ -4,12 +4,14 @@ import 'aos/dist/aos.css'
 import 'swiper/css/bundle'
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap-icons/font/bootstrap-icons.css";
+import {socialLinks} from '../consts'
 
 // Main CSS File
 import '../assets/css/main.css'
 import '../styles/global.css'
 
 const {title, description, page, crumb} = Astro.props
+const navLinks = [{link: 'Home', href: import.meta.env.BASE_URL}, {link: 'About', href: import.meta.env.BASE_URL+'/about'}, {link: 'Blog/Categories', href: import.meta.env.BASE_URL+'/blog', cat: ['Culture', 'Fashion', 'Lifestyle']}, {link: 'Contact', href: import.meta.env.BASE_URL+'/contact'} ]
 ---
 
 <!DOCTYPE html>
@@ -55,36 +57,19 @@ const {title, description, page, crumb} = Astro.props
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href={import.meta.env.BASE_URL} class="active">Home</a></li>
-          <li><a href=`${import.meta.env.BASE_URL}/about`>About</a></li>
-          <li><a href=`${import.meta.env.BASE_URL}/single-post`>Single Post</a></li>
-          <li class="dropdown"><a href=`${import.meta.env.BASE_URL}/blog`><span>Categories</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
+          {navLinks.map(nav => nav.cat ? <li class="dropdown"><a href={nav.href}><span>{nav.link}</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
             <ul>
-              <li><a href=`${import.meta.env.BASE_URL}/category`>Category 1</a></li>
-              <li class="dropdown"><a href=`${import.meta.env.BASE_URL}/#`><span>Deep Dropdown</span> <i class="bi bi-chevron-down toggle-dropdown"></i></a>
-                <ul>
-                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 1</a></li>
-                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 2</a></li>
-                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 3</a></li>
-                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 4</a></li>
-                  <li><a href=`${import.meta.env.BASE_URL}/#`>Deep Dropdown 5</a></li>
-                </ul>
-              </li>
-              <li><a href=`${import.meta.env.BASE_URL}/category`>Category 2</a></li>
-              <li><a href=`${import.meta.env.BASE_URL}/category`>Category 3</a></li>
-              <li><a href=`${import.meta.env.BASE_URL}/category`>Category 4</a></li>
+              {nav.cat.map(cate => <li><a href={import.meta.env.BASE_URL+'/category'}>{cate}</a></li>)}
             </ul>
-          </li>
-          <li><a href="/marcy/contact">Contact</a></li>
+          </li> : 
+          <li><a href={nav.href} class="active">{nav.link}</a></li>
+          )}
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
       <div class="header-social-links">
-        <a href=`${import.meta.env.BASE_URL}/#` class="twitter"><i class="bi bi-twitter-x"></i></a>
-        <a href=`${import.meta.env.BASE_URL}/#` class="facebook"><i class="bi bi-facebook"></i></a>
-        <a href=`${import.meta.env.BASE_URL}/#` class="instagram"><i class="bi bi-instagram"></i></a>
-        <a href=`${import.meta.env.BASE_URL}/#` class="linkedin"><i class="bi bi-linkedin"></i></a>
+        {socialLinks.map(social => <a href={social.href} class={social.class}><i class={social.icon}></i></a>)}
       </div>
 
     </div>
@@ -124,10 +109,7 @@ const {title, description, page, crumb} = Astro.props
             <p><strong>Email:</strong> <span>info@example.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
-            <a href={import.meta.env.BASE_URL}><i class="bi bi-twitter-x"></i></a>
-            <a href={import.meta.env.BASE_URL}><i class="bi bi-facebook"></i></a>
-            <a href={import.meta.env.BASE_URL}><i class="bi bi-instagram"></i></a>
-            <a href={import.meta.env.BASE_URL}><i class="bi bi-linkedin"></i></a>
+            {socialLinks.map(social => <a href={social.href}><i class={social.icon}></i></a>)}
           </div>
         </div>
 
