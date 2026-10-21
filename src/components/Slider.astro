@@ -1,0 +1,106 @@
+---
+// Import the necessary image function from Astro
+import { getImage } from 'astro:assets';
+
+// 1. Accept the 'featured' array as a prop
+interface FeaturedItem {
+  title: string;
+  content: string;
+  href: string;
+  img: string; // The exact file path string, e.g., "/src/assets/slideshow/slide"
+}
+
+interface Props {
+  featured: FeaturedItem[];
+}
+
+const { featured } = Astro.props;
+
+// 2. Fetch all images inside src/assets matching our types
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,webp}', {eager: true});
+
+// 3. Process every slide asynchronously to resolve the GitHub Pages paths and optimize to WebP
+const optimizedSlides = await Promise.all(
+  featured.map(async (feat, ind) => {
+    // Reconstruct your filename string: path + index + extension (adjust extension if needed)
+    const targetPath = `${feat.img}${ind + 1}.jpg`; 
+    
+    if (!images[targetPath]) {
+      throw new Error(`The asset file "${targetPath}" could not be found in "src/assets/".`);
+    }
+
+    // Resolve file metadata structure via Vite glob cache
+    const fileAsset = await images[targetPath].default;
+    
+    // Generate optimized background asset targeting production subfolders directly
+    const optimizedImage = await getImage({ src: fileAsset, format: 'webp' });
+
+    return {
+      ...feat,
+      backgroundUrl: optimizedImage.src,
+    };
+  })
+);
+---
+
+<!-- Swiper container wrapper structure -->
+<div class="swiper init-swiper">
+  <!-- Clean up config handling by passing variables straight via data attributes -->
+  <div class="swiper-wrapper">
+    {optimizedSlides.map((slide) => (
+      <div 
+        class="swiper-slide" 
+        style={`background-image: url('${slide.backgroundUrl}');`}
+      >
+        <div class="content">
+          <h2><a href={slide.href}>{slide.title}</a></h2>
+          <p>{slide.content}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+
+  <!-- Navigation Arrows -->
+  <div class="swiper-button-next"></div>
+  <div class="swiper-button-prev"></div>
+
+  <!-- Pagination Layout dots -->
+  <div class="swiper-pagination"></div>
+</div>
+
+<!-- 4. Native Astro Client Script Block -->
+<!-- Astro automatically bundles, optimizes, and executes this script exactly once on the browser client -->
+<script>
+  // Import Swiper components natively inside your client bundle script
+  import Swiper from 'swiper';
+  import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+  
+  // Import the standard Swiper styling files straight into your package bundle pipeline
+  import 'swiper/css';
+  import 'swiper/css/navigation';
+  import 'swiper/css/pagination';
+
+  // Safely initialize when document elements are mapped completely
+  document.addEventListener('DOMContentLoaded', () => {
+    new Swiper('.init-swiper', {
+      modules: [Navigation, Pagination, Autoplay],
+      loop: true,
+      speed: 600,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      slidesPerView: "auto",
+      centeredSlides: true,
+      pagination: {
+        el: '.swiper-pagination',
+        type: 'bullets',
+        clickable: true,
+      },
+      navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+      },
+    });
+  });
+</script>

@@ -8,25 +8,25 @@ export const socialLinks =[{class:'twitter', icon:'bi bi-twitter-x', href:import
 //Template things
 export const featured = [
   {
-    img: import.meta.env.BASE_URL+'/src/assets/img/post-slide-',
+    img: '/src/assets/img/post-slide-',
     href: import.meta.env.BASE_URL+'/single-post',
     title: 'The Best Homemade Masks for Face (keep the Pimples Away)',
     content:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.'
   },
   {
-    img: import.meta.env.BASE_URL+'/src/assets/img/post-slide-',
+    img: '/src/assets/img/post-slide-',
     href: import.meta.env.BASE_URL+'/single-post',
     title: '17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut',
     content:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.'
   },
   {
-    img: import.meta.env.BASE_URL+'/src/assets/img/post-slide-',
+    img: '/src/assets/img/post-slide-',
     href: import.meta.env.BASE_URL+'/single-post',
     title: '13 Amazing Poems from Shel Silverstein with Valuable Life Lessons',
     content:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.'
   },
   {
-    img: import.meta.env.BASE_URL+'/src/assets/img/post-slide-',
+    img: '/src/assets/img/post-slide-',
     href: import.meta.env.BASE_URL+'/single-post',
     title: '9 Half-up/half-down Hairstyles for Long and Medium Hair',
     content:'Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.'
