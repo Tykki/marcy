@@ -73,7 +73,7 @@ import {featured, trend, culture} from '../consts'
               <div class="post-entry lg">
                 {trend[0] && 
                   <a href={trend[0].href}><BlogImg src={trend[0].img} alt="image about Post" c="img-fluid" /></a>
-                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>{trend[0].date}</span></div>
+                  <div class="post-meta"><span class="date">{trend[0]}.cate</span> <span class="mx-1">•</span> <span>{trend[0].date}</span></div>
                   <h2><a href={trend[0].href}>{trend[0].title}</a></h2>
                   <p class="mb-4 d-block">{trend[0].preview}</p>
 
@@ -93,7 +93,7 @@ import {featured, trend, culture} from '../consts'
                 <div class="col-lg-4 border-start custom-border">
                   {trend.slice(1, 4).map(post => (
                   <div class="post-entry">
-                    <a href={post.href}><Image src={post.img} alt="info about Post" width={900} height={571} class="img-fluid" /></a>
+                    <a href={post.href}><BlogImg src={post.img} alt="info about Post" c="img-fluid" /></a>
                     <div class="post-meta"><span class="date">{post.cate}</span> <span class="mx-1">•</span> <span>{post.date}</span></div>
                     <h2><a href={post.href}>{post.title}</a></h2>
                   </div>
@@ -102,7 +102,7 @@ import {featured, trend, culture} from '../consts'
                 <div class="col-lg-4 border-start custom-border">
                   {trend.slice(4, 7).map(post => (
                   <div class="post-entry">
-                    <a href={post.href}><Image src={post.img} alt="info about Post" width={900} height={571} class="img-fluid" /></a>
+                    <a href={post.href}><BlogImg src={post.img} alt="info about Post" c="img-fluid" /></a>
                     <div class="post-meta"><span class="date">{post.cate}</span> <span class="mx-1">•</span> <span>{post.date}</span></div>
                     <h2><a href={post.href}>{post.title}</a></h2>
                   </div>
@@ -158,7 +158,7 @@ import {featured, trend, culture} from '../consts'
             <div class="d-lg-flex post-entry">
               {culture[0] && 
                 <a href={culture[0].href} class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
-                  <Image src={culture[0].img} alt="photo of post" width={900} height={571} class="img-fluid" />
+                  <BlogImg src={culture[0].img} alt="photo of post" c="img-fluid" />
                 </a>
                 <div>
                   <div class="post-meta"><span class="date">{culture[0].cate}</span> <span class="mx-1">•</span> <span>{culture[0].date}</span></div>
@@ -178,7 +178,7 @@ import {featured, trend, culture} from '../consts'
               <div class="col-lg-4">
                 <div class="post-list border-bottom">
                   {culture[1] && 
-                    <a href={culture[1].href}><Image src={culture[1].img} width={900} height={571} alt="photo" class="img-fluid" /></a>
+                    <a href={culture[1].href}><BlogImg src={culture[1].img} alt="photo" c="img-fluid" /></a>
                     <div class="post-meta"><span class="date">{culture[1].cate}</span> <span class="mx-1">•</span> <span>{culture[1].date}</span></div>
                     <h2 class="mb-2"><a href={culture[1].href}>{culture[1].title}</a></h2>
                     <span class="author mb-3 d-block">Marcy</span>
@@ -197,7 +197,7 @@ import {featured, trend, culture} from '../consts'
               <div class="col-lg-8">
                 <div class="post-list">
                   {culture[3] &&
-                    <a href={culture[3].href}><Image src={culture[3].img} height="571" width="900" alt="photo" class="img-fluid" /></a>
+                    <a href={culture[3].href}><BlogImg src={culture[3].img} height="571" width="900" alt="photo" c="img-fluid" /></a>
                     <div class="post-meta"><span class="date">{culture[3].cate}</span> <span class="mx-1">•</span> <span>{culture[3].date}</span></div>
                     <h2 class="mb-2"><a href="blog-details.html">{culture[3].title}</a></h2>
                     <span class="author mb-3 d-block">Marcy</span>
