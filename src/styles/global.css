@@ -19,3 +19,8 @@ a:hover{
 .slider .content a {
     color: var(--default-color) !important;
 }
+
+ .blog-comments .comment .comment-img img {
+    width: 60px;
+    height: 60px;
+}

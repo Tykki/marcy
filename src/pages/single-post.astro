@@ -1,10 +1,8 @@
 ---
-import MainLayout from "../layouts/MainLayout.astro";
+import BlogLayout from "../layouts/BlogLayout.astro";
+import BlogImg from '../components/BlogImg.astro'
 ---
-<MainLayout title="Post" page="single-post-page" crumb="Single Post">
-
-    <div class="container">
-      <div class="row">
+<BlogLayout title="Post" page="single-post-page" crumb="Single Post" recent={[]} tags={[]}>
 
         <div class="col-lg-8">
 
@@ -15,7 +13,7 @@ import MainLayout from "../layouts/MainLayout.astro";
               <article class="article">
 
                 <div class="post-img">
-                  <img src="src/assets/img/blog/blog-1.jpg" alt="" class="img-fluid">
+                  <BlogImg src="/src/assets/img/blog/blog-1.jpg" alt="photo" c="img-fluid" />
                 </div>
 
                 <h2 class="title">Dolorum optio tempore voluptas dignissimos cumque fuga qui quibusdam quia</h2>
@@ -56,7 +54,7 @@ import MainLayout from "../layouts/MainLayout.astro";
                     Quia et suscipit non sequi. Maxime sed odit. Beatae nesciunt nesciunt accusamus quia aut ratione aspernatur dolor. Sint harum eveniet dicta exercitationem minima. Exercitationem omnis asperiores natus aperiam dolor consequatur id ex sed. Quibusdam rerum dolores sint consequatur quidem ea.
                     Beatae minima sunt libero soluta sapiente in rem assumenda. Et qui odit voluptatem. Cum quibusdam voluptatem voluptatem accusamus mollitia aut atque aut.
                   </p>
-                  <img src="src/assets/img/blog/blog-inside-post.jpg" class="img-fluid" alt="">
+                  <BlogImg src="/src/assets/img/blog/blog-inside-post.jpg" c="img-fluid" alt="photo"/>
 
                   <h3>Ut repellat blanditiis est dolore sunt dolorum quae.</h3>
                   <p>
@@ -97,7 +95,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
               <div id="comment-1" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="src/assets/img/blog/comments-1.jpg" alt=""></div>
+                  <div class="comment-img"><BlogImg src="/src/assets/img/blog/comments-1.jpg" alt="photo"/></div>
                   <div>
                     <h5><a href="">Georgia Reader</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan,2022</time>
@@ -111,7 +109,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
               <div id="comment-2" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="src/assets/img/blog/comments-2.jpg" alt=""></div>
+                  <div class="comment-img"><BlogImg src="/src/assets/img/blog/comments-2.jpg" alt="photo"/></div>
                   <div>
                     <h5><a href="">Aron Alvarado</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan,2022</time>
@@ -123,7 +121,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
                 <div id="comment-reply-1" class="comment comment-reply">
                   <div class="d-flex">
-                    <div class="comment-img"><img src="src/assets/img/blog/comments-3.jpg" alt=""></div>
+                    <div class="comment-img"><BlogImg src="/src/assets/img/blog/comments-3.jpg" alt="photo"/></div>
                     <div>
                       <h5><a href="">Lynda Small</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                       <time datetime="2020-01-01">01 Jan,2022</time>
@@ -139,7 +137,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
                   <div id="comment-reply-2" class="comment comment-reply">
                     <div class="d-flex">
-                      <div class="comment-img"><img src="src/assets/img/blog/comments-4.jpg" alt=""></div>
+                      <div class="comment-img"><BlogImg src="/src/assets/img/blog/comments-4.jpg" alt="photo"/></div>
                       <div>
                         <h5><a href="">Sianna Ramsay</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                         <time datetime="2020-01-01">01 Jan,2022</time>
@@ -157,7 +155,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
               <div id="comment-3" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="src/assets/img/blog/comments-5.jpg" alt=""></div>
+                  <div class="comment-img"><BlogImg src="/src/assets/img/blog/comments-5.jpg" alt="photo"/></div>
                   <div>
                     <h5><a href="">Nolan Davidson</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan,2022</time>
@@ -172,7 +170,7 @@ import MainLayout from "../layouts/MainLayout.astro";
 
               <div id="comment-4" class="comment">
                 <div class="d-flex">
-                  <div class="comment-img"><img src="src/assets/img/blog/comments-6.jpg" alt=""></div>
+                  <div class="comment-img"><BlogImg src="/src/assets/img/blog/comments-6.jpg" alt="photo"/></div>
                   <div>
                     <h5><a href="">Kay Duggan</a> <a href="#" class="reply"><i class="bi bi-reply-fill"></i> Reply</a></h5>
                     <time datetime="2020-01-01">01 Jan,2022</time>
@@ -226,118 +224,6 @@ import MainLayout from "../layouts/MainLayout.astro";
 
         </div>
 
-        <div class="col-lg-4 sidebar">
+        
 
-          <div class="widgets-container">
-
-            <!-- Blog Author Widget -->
-            <div class="blog-author-widget widget-item">
-
-              <div class="d-flex flex-column align-items-center">
-                <div class="d-flex align-items-center w-100">
-                  <img src="src/assets/img/blog/blog-author.jpg" class="rounded-circle flex-shrink-0" alt="">
-                  <div>
-                    <h4>Jane Smith</h4>
-                    <div class="social-links">
-                      <a href="https://x.com/#"><i class="bi bi-twitter-x"></i></a>
-                      <a href="https://facebook.com/#"><i class="bi bi-facebook"></i></a>
-                      <a href="https://instagram.com/#"><i class="biu bi-instagram"></i></a>
-                      <a href="https://instagram.com/#"><i class="biu bi-linkedin"></i></a>
-                    </div>
-                  </div>
-                </div>
-
-                <p>
-                  Itaque quidem optio quia voluptatibus dolorem dolor. Modi eum sed possimus accusantium. Quas repellat voluptatem officia numquam sint aspernatur voluptas. Esse et accusantium ut unde voluptas.
-                </p>
-
-              </div>
-
-            </div><!--/Blog Author Widget -->
-
-            <!-- Search Widget -->
-            <div class="search-widget widget-item">
-
-              <h3 class="widget-title">Search</h3>
-              <form action="">
-                <input type="text">
-                <button type="submit" title="Search"><i class="bi bi-search"></i></button>
-              </form>
-
-            </div><!--/Search Widget -->
-
-            <!-- Recent Posts Widget -->
-            <div class="recent-posts-widget widget-item">
-
-              <h3 class="widget-title">Recent Posts</h3>
-
-              <div class="post-item">
-                <img src="src/assets/img/blog/blog-recent-1.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Nihil blanditiis at in nihil autem</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="src/assets/img/blog/blog-recent-2.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Quidem autem et impedit</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="src/assets/img/blog/blog-recent-3.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Id quia et et ut maxime similique occaecati ut</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="src/assets/img/blog/blog-recent-4.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Laborum corporis quo dara net para</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-              <div class="post-item">
-                <img src="src/assets/img/blog/blog-recent-5.jpg" alt="" class="flex-shrink-0">
-                <div>
-                  <h4><a href="blog-details.html">Et dolores corrupti quae illo quod dolor</a></h4>
-                  <time datetime="2020-01-01">Jan 1, 2020</time>
-                </div>
-              </div><!-- End recent post item-->
-
-            </div><!--/Recent Posts Widget -->
-
-            <!-- Tags Widget -->
-            <div class="tags-widget widget-item">
-
-              <h3 class="widget-title">Tags</h3>
-              <ul>
-                <li><a href="#">App</a></li>
-                <li><a href="#">IT</a></li>
-                <li><a href="#">Business</a></li>
-                <li><a href="#">Mac</a></li>
-                <li><a href="#">Design</a></li>
-                <li><a href="#">Office</a></li>
-                <li><a href="#">Creative</a></li>
-                <li><a href="#">Studio</a></li>
-                <li><a href="#">Smart</a></li>
-                <li><a href="#">Tips</a></li>
-                <li><a href="#">Marketing</a></li>
-              </ul>
-
-            </div><!--/Tags Widget -->
-
-          </div>
-
-        </div>
-
-      </div>
-    </div>
-
-</MainLayout>
+</BlogLayout>
