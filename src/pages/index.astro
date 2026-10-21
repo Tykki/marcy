@@ -1,5 +1,12 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
+import {Image} from "astro:assets"
+import avi from "../assets/img/person-1.jpg"
+import avi2 from '../assets/img/person-2.jpg'
+import avi3 from '../assests/img/person-3.jpg'
+import {featured, trend, culture} from '../consts'
+
+  
 ---
 
 <MainLayout title="Marcy | Home" description="Home of Blog Page" page="index-page">
@@ -33,33 +40,14 @@ import MainLayout from "../layouts/MainLayout.astro";
 
           <div class="swiper-wrapper">
 
-            <div class="swiper-slide" style="background-image: url('/marcy/src/assets/img/post-slide-1.jpg');">
-              <div class="content">
-                <h2><a href="single-post.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
+            {featured.map((feat, ind) => (
+              <div class="swiper-slide" style={"background-image: url('"+feat.img+(ind+1)+".jpg');"}>
+                <div class="content">
+                  <h2><a href={feat.href}>{feat.title}</a></h2>
+                  <p>{feat.content}</p>
+                </div>
               </div>
-            </div>
-
-            <div class="swiper-slide" style="background-image: url('/marcy/src/assets/img/post-slide-2.jpg');">
-              <div class="content">
-                <h2><a href="single-post.html">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-              </div>
-            </div>
-
-            <div class="swiper-slide" style="background-image: url('/marcy/src/assets/img/post-slide-3.jpg');">
-              <div class="content">
-                <h2><a href="single-post.html">13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</a></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-              </div>
-            </div>
-
-            <div class="swiper-slide" style="background-image: url('/marcy/src/assets/img/post-slide-4.jpg');">
-              <div class="content">
-                <h2><a href="single-post.html">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem neque est mollitia! Beatae minima assumenda repellat harum vero, officiis ipsam magnam obcaecati cumque maxime inventore repudiandae quidem necessitatibus rem atque.</p>
-              </div>
-            </div>
+            ))}
           </div>
 
           <div class="swiper-button-next"></div>
@@ -82,17 +70,21 @@ import MainLayout from "../layouts/MainLayout.astro";
             <div class="col-lg-4">
 
               <div class="post-entry lg">
-                <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
-                <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                <h2><a href="blog-details.html">11 Work From Home Part-Time Jobs You Can Do Now</a></h2>
-                <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos</p>
+                {trend[0] && 
+                  <a href={trend[0].href}><Image src={trend[0].img} width={900} height={571} alt="image about Post" class="img-fluid" /></a>
+                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>{trend[0].date}</span></div>
+                  <h2><a href={trend[0].href}>{trend[0].title}</a></h2>
+                  <p class="mb-4 d-block">{trend[0].preview}</p>
 
-                <div class="d-flex align-items-center author">
-                  <div class="photo"><img src="/marcy/src/assets/img/person-1.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Cameron Williamson</h3>
+                  <div class="d-flex align-items-center author">
+                    <div class="photo"><Image src={avi} alt="" class="img-fluid" /></div>
+                    import avi2 from '../assets/img/person-2.jpg'
+                    import avi3 from '../assests/img/person-3.jpg'
+                    <div class="name">
+                      <h3 class="m-0 p-0">Marcy</h3>
+                    </div>
                   </div>
-                </div>
+                }
               </div>
 
             </div>
@@ -100,38 +92,23 @@ import MainLayout from "../layouts/MainLayout.astro";
             <div class="col-lg-8">
               <div class="row g-5">
                 <div class="col-lg-4 border-start custom-border">
+                  {trend.slice(1, 4).map(post => (
                   <div class="post-entry">
-                    <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-2.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Sport</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                    <h2><a href="blog-details.html">Let’s Get Back to Work, New York</a></h2>
+                    <a href={post.href}><Image src={post.img} alt="info about Post" width={900} height={571} class="img-fluid" /></a>
+                    <div class="post-meta"><span class="date">{post.cate}</span> <span class="mx-1">•</span> <span>{post.date}</span></div>
+                    <h2><a href={post.href}>{post.title}</a></h2>
                   </div>
-                  <div class="post-entry">
-                    <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-5.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Food</span> <span class="mx-1">•</span> <span>Jul 17th '22</span></div>
-                    <h2><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                  </div>
-                  <div class="post-entry">
-                    <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-7.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Design</span> <span class="mx-1">•</span> <span>Mar 15th '22</span></div>
-                    <h2><a href="blog-details.html">Why Craigslist Tampa Is One of The Most Interesting Places On the Web?</a></h2>
-                  </div>
+                  ))}
                 </div>
                 <div class="col-lg-4 border-start custom-border">
+                  {trend.slice(4, 7).map(post => (
                   <div class="post-entry">
-                    <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-3.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Business</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                    <h2><a href="blog-details.html">6 Easy Steps To Create Your Own Cute Merch For Instagram</a></h2>
+                    <a href={post.href}><Image src={post.img} alt="info about Post" width={900} height={571} class="img-fluid" /></a>
+                    <div class="post-meta"><span class="date">{post.cate}</span> <span class="mx-1">•</span> <span>{post.date}</span></div>
+                    <h2><a href={post.href}>{post.title}</a></h2>
                   </div>
-                  <div class="post-entry">
-                    <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-6.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Tech</span> <span class="mx-1">•</span> <span>Mar 1st '22</span></div>
-                    <h2><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-                  </div>
-                  <div class="post-entry">
-                    <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-8.jpg" alt="" class="img-fluid"></a>
-                    <div class="post-meta"><span class="date">Travel</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                    <h2><a href="blog-details.html">5 Great Startup Tips for Female Founders</a></h2>
-                  </div>
+                  ))}
+                  
                 </div>
 
                 <!-- Trending Section -->
@@ -140,41 +117,15 @@ import MainLayout from "../layouts/MainLayout.astro";
                   <div class="trending">
                     <h3>Trending</h3>
                     <ul class="trending-post">
-                      <li>
-                        <a href="blog-details.html">
-                          <span class="number">1</span>
-                          <h3>The Best Homemade Masks for Face (keep the Pimples Away)</h3>
-                          <span class="author">Jane Cooper</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="blog-details.html">
-                          <span class="number">2</span>
-                          <h3>17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</h3>
-                          <span class="author">Wade Warren</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="blog-details.html">
-                          <span class="number">3</span>
-                          <h3>13 Amazing Poems from Shel Silverstein with Valuable Life Lessons</h3>
-                          <span class="author">Esther Howard</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="blog-details.html">
-                          <span class="number">4</span>
-                          <h3>9 Half-up/half-down Hairstyles for Long and Medium Hair</h3>
-                          <span class="author">Cameron Williamson</span>
-                        </a>
-                      </li>
-                      <li>
-                        <a href="blog-details.html">
-                          <span class="number">5</span>
-                          <h3>Life Insurance And Pregnancy: A Working Mom’s Guide</h3>
-                          <span class="author">Jenny Wilson</span>
-                        </a>
-                      </li>
+                      {trend.slice(7, 12).map((post, ind) => (
+                        <li>
+                          <a href={post.href}>
+                            <span class="number">{ind+1}</span>
+                            <h3>{post.title}</h3>
+                            <span class="author">Marcy</span>
+                          </a>
+                        </li>
+                      ))}
                     </ul>
                   </div>
 
@@ -206,86 +157,68 @@ import MainLayout from "../layouts/MainLayout.astro";
           <div class="col-md-9">
 
             <div class="d-lg-flex post-entry">
-              <a href="blog-details.html" class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
-                <img src="/marcy/src/assets/img/post-landscape-6.jpg" alt="" class="img-fluid">
-              </a>
-              <div>
-                <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                <h3><a href="blog-details.html">What is the son of Football Coach John Gruden, Deuce Gruden doing Now?</a></h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio placeat exercitationem magni voluptates dolore. Tenetur fugiat voluptates quas, nobis error deserunt aliquam temporibus sapiente, laudantium dolorum itaque libero eos deleniti?</p>
-                <div class="d-flex align-items-center author">
-                  <div class="photo"><img src="/marcy/src/assets/img/person-2.jpg" alt="" class="img-fluid"></div>
-                  <div class="name">
-                    <h3 class="m-0 p-0">Wade Warren</h3>
+              {culture[0] && 
+                <a href={culture[0].href} class="me-4 thumbnail mb-4 mb-lg-0 d-inline-block">
+                  <Image src={culture[0].img} alt="photo of post" width={900} height={571} class="img-fluid" />
+                </a>
+                <div>
+                  <div class="post-meta"><span class="date">{culture[0].cate}</span> <span class="mx-1">•</span> <span>{culture[0].date}</span></div>
+                  <h3><a href={culture[0].href}>{culture[0].title}</a></h3>
+                  <p>{culture[0].preview}</p>
+                  <div class="d-flex align-items-center author">
+                    <div class="photo"><Image src={avi2} alt="photo of post" class="img-fluid" /></div>
+                    <div class="name">
+                      <h3 class="m-0 p-0">Marcy</h3>
+                    </div>
                   </div>
                 </div>
-              </div>
+              }
             </div>
 
             <div class="row">
               <div class="col-lg-4">
                 <div class="post-list border-bottom">
-                  <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-1.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">11 Work From Home Part-Time Jobs You Can Do Now</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
-                  <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus</p>
+                  {culture[1] && 
+                    <a href={culture[1].href}><Image src={culture[1].img} width={900} height={571} alt="photo" class="img-fluid" /></a>
+                    <div class="post-meta"><span class="date">{culture[1].cate}</span> <span class="mx-1">•</span> <span>{culture[1].date}</span></div>
+                    <h2 class="mb-2"><a href={culture[1].href}>{culture[1].title}</a></h2>
+                    <span class="author mb-3 d-block">Marcy</span>
+                    <p class="mb-4 d-block">{culture[1].preview}</p>
+                  }
                 </div>
 
                 <div class="post-list">
-                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">5 Great Startup Tips for Female Founders</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
+                  {culture[2] &&
+                    <div class="post-meta"><span class="date">{culture[2].cate}</span> <span class="mx-1">•</span> <span>{culture[2].date}</span></div>
+                    <h2 class="mb-2"><a href={culture[2].href}>{culture[2].title}</a></h2>
+                    <span class="author mb-3 d-block">Marcy</span>
+                  }
                 </div>
               </div>
               <div class="col-lg-8">
                 <div class="post-list">
-                  <a href="blog-details.html"><img src="/marcy/src/assets/img/post-landscape-2.jpg" alt="" class="img-fluid"></a>
-                  <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-                  <h2 class="mb-2"><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-                  <span class="author mb-3 d-block">Jenny Wilson</span>
-                  <p class="mb-4 d-block">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus</p>
+                  {culture[3] &&
+                    <a href={culture[3].href}><Image src={culture[3].img} height="571" width="900" alt="photo" class="img-fluid" /></a>
+                    <div class="post-meta"><span class="date">{culture[3].cate}</span> <span class="mx-1">•</span> <span>{culture[3].date}</span></div>
+                    <h2 class="mb-2"><a href="blog-details.html">{culture[3].title}</a></h2>
+                    <span class="author mb-3 d-block">Marcy</span>
+                    <p class="mb-4 d-block">{culture[3].preview}</p>
+                  
+                  }
                 </div>
               </div>
             </div>
           </div>
 
           <div class="col-md-3">
-            <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">How to Avoid Distraction and Stay Focused During Video Calls?</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
-            </div>
+            {culture.slice(4, 10).map(post => (
+              <div class="post-list border-bottom">
+                <div class="post-meta"><span class="date">{post.cate}</span> <span class="mx-1">•</span> <span>{post.date}</span></div>
+                <h2 class="mb-2"><a href={post.href}>{post.title}</a></h2>
+                <span class="author mb-3 d-block">Marcy</span>
+              </div>
 
-            <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">17 Pictures of Medium Length Hair in Layers That Will Inspire Your New Haircut</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
-            </div>
-
-            <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">9 Half-up/half-down Hairstyles for Long and Medium Hair</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
-            </div>
-
-            <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">Life Insurance And Pregnancy: A Working Mom’s Guide</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
-            </div>
-
-            <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">The Best Homemade Masks for Face (keep the Pimples Away)</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
-            </div>
-
-            <div class="post-list border-bottom">
-              <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>Jul 5th '22</span></div>
-              <h2 class="mb-2"><a href="blog-details.html">10 Life-Changing Hacks Every Working Mom Should Know</a></h2>
-              <span class="author mb-3 d-block">Jenny Wilson</span>
-            </div>
+            ))}
           </div>
         </div>
 
