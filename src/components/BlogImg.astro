@@ -1,0 +1,22 @@
+---
+// src/components/BlogImg.astro
+import { Image } from 'astro:assets';
+
+// 1. Accept the image location string as a prop (e.g., "/src/assets/hero.png")
+interface Props {
+  src: string;
+  alt: string;
+}
+const { src, alt, c } = Astro.props;
+
+// 2. Fetch metadata targets for all images matching extensions inside src/assets/
+const images = import.meta.glob<{ default: ImageMetadata }>('/src/assets/**/*.{jpeg,jpg,png,gif,webp}');
+
+// 3. Throw a safe error during build if the path does not exist
+if (!images[src]) {
+  throw new Error(`"${src}" does not exist in your "src/assets/" directory.`);
+}
+---
+
+<!-- 4. Execute the match function inline. Astro now automatically infers height and width! -->
+<Image src={images[src]()} alt={alt} class={c} />

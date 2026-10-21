@@ -37,7 +37,7 @@ export const trend = [
     {
       id: 1,
       href: import.meta.env.BASE_URL+'/single-post',
-      img: import.meta.env.BASE_URL+'/src/assets/img/post-landscape-1.jpg',
+      img: '/src/assets/img/post-landscape-1.jpg',
       title: '11 Work From Home Part-Time Jobs You Can Do Now',
       preview: 'Lorem ipsum dolor sit, amet consectetur adipisicing elit. Vero temporibus repudiandae, inventore pariatur numquam cumque possimus exercitationem? Nihil tempore odit ab minus eveniet praesentium, similique blanditiis molestiae ut saepe perspiciatis officia nemo, eos quae cumque. Accusamus fugiat architecto rerum animi atque eveniet, quo, praesentium dignissimos',
       cate: 'Culture',

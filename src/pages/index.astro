@@ -1,6 +1,7 @@
 ---
 import MainLayout from "../layouts/MainLayout.astro";
 import {Image} from "astro:assets"
+import BlogImg from '../components/BlogImg.astro'
 import avi from "../assets/img/person-1.jpg"
 import avi2 from '../assets/img/person-2.jpg'
 import avi3 from '../assests/img/person-3.jpg'
@@ -71,15 +72,13 @@ import {featured, trend, culture} from '../consts'
 
               <div class="post-entry lg">
                 {trend[0] && 
-                  <a href={trend[0].href}><Image src={trend[0].img} width={900} height={571} alt="image about Post" class="img-fluid" /></a>
+                  <a href={trend[0].href}><BlogImg src={trend[0].img} alt="image about Post" c="img-fluid" /></a>
                   <div class="post-meta"><span class="date">Culture</span> <span class="mx-1">•</span> <span>{trend[0].date}</span></div>
                   <h2><a href={trend[0].href}>{trend[0].title}</a></h2>
                   <p class="mb-4 d-block">{trend[0].preview}</p>
 
                   <div class="d-flex align-items-center author">
                     <div class="photo"><Image src={avi} alt="" class="img-fluid" /></div>
-                    import avi2 from '../assets/img/person-2.jpg'
-                    import avi3 from '../assests/img/person-3.jpg'
                     <div class="name">
                       <h3 class="m-0 p-0">Marcy</h3>
                     </div>
